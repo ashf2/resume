@@ -1,0 +1,44 @@
+{
+  "titleNameMap": {
+    "educationList": "教育背景",
+    "workExpList": "工作经历",
+    "projectList": "项目经验",
+    "skillList": "个人技能",
+    "awardList": "更多信息",
+    "workList": "个人作品",
+    "aboutme": "自我介绍"
+  },
+  "avatar": {
+    "src": "",
+    "hidden": true
+  },
+  "profile": {
+    "name": "",
+    "email": "",
+    "mobile": "",
+    "github": "",
+    "zhihu": "",
+    "workExpYear": "",
+    "position": ""
+  },
+  "educationList": [],
+  "awardList": [],
+  "workExpList": [],
+  "skillList": [],
+  "projectList": [],
+  "workList": [],
+  "aboutme": {
+    "aboutme_desc": ""
+  },
+  "theme": {
+    "id": "default",
+    "name": "系统默认",
+    "color": "#2f5785",
+    "tagColor": "#8bc34a",
+    "pageBg": "#f4f5f7",
+    "cardBg": "#ffffff",
+    "textMain": "#333333",
+    "textLight": "#666666",
+    "lineColor": "#e8e8e8"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resume.local/schemas/resume.schema.json",
+  "title": "ResumeJSON",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "titleNameMap",
+    "avatar",
+    "profile",
+    "educationList",
+    "awardList",
+    "workExpList",
+    "skillList",
+    "projectList",
+    "workList",
+    "aboutme",
+    "theme"
+  ],
+  "properties": {
+    "titleNameMap": {
+      "type": "object",
+      "required": [
+        "educationList",
+        "workExpList",
+        "projectList",
+        "skillList",
+        "awardList",
+        "workList",
+        "aboutme"
+      ],
+      "additionalProperties": { "type": "string" }
+    },
+    "avatar": {
+      "type": "object",
+      "required": ["src", "hidden"],
+      "properties": {
+        "src": { "type": "string" },
+        "hidden": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "required": ["name", "email", "mobile", "github", "zhihu", "workExpYear", "position"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "email": { "type": "string" },
+        "mobile": { "type": "string" },
+        "github": { "type": "string" },
+        "zhihu": { "type": "string" },
+        "workExpYear": { "type": "string" },
+        "position": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "educationList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/educationItem" }
+    },
+    "awardList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/awardItem" }
+    },
+    "workExpList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/workExpItem" }
+    },
+    "skillList": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "projectList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/projectItem" }
+    },
+    "workList": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "aboutme": {
+      "type": "object",
+      "required": ["aboutme_desc"],
+      "properties": {
+        "aboutme_desc": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "theme": {
+      "type": "object",
+      "required": ["id", "color", "tagColor"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["default", "blue-minimal", "classic"]
+        },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "tagColor": { "type": "string" },
+        "pageBg": { "type": "string" },
+        "cardBg": { "type": "string" },
+        "textMain": { "type": "string" },
+        "textLight": { "type": "string" },
+        "lineColor": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "educationItem": {
+      "type": "object",
+      "required": ["edu_time", "school", "major", "academic_degree"],
+      "properties": {
+        "edu_time": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": ["string", "null"] }
+        },
+        "school": { "type": "string", "minLength": 1 },
+        "major": { "type": "string" },
+        "academic_degree": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "workExpItem": {
+      "type": "object",
+      "required": ["company_name", "department_name", "work_time", "work_desc"],
+      "properties": {
+        "company_name": { "type": "string", "minLength": 1 },
+        "department_name": { "type": "string" },
+        "work_time": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": ["string", "null"] }
+        },
+        "work_desc": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "projectItem": {
+      "type": "object",
+      "required": [
+        "project_name",
+        "project_role",
+        "project_time",
+        "project_desc",
+        "project_content"
+      ],
+      "properties": {
+        "project_name": { "type": "string", "minLength": 1 },
+        "project_role": { "type": "string" },
+        "project_time": { "type": "string", "minLength": 1 },
+        "project_desc": { "type": "string" },
+        "project_content": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "awardItem": {
+      "type": "object",
+      "required": ["award_info", "award_time"],
+      "properties": {
+        "award_info": { "type": "string", "minLength": 1 },
+        "award_time": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

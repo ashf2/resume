@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廖晓娟 (新茗)</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        :root {
+            --primary-color: #2f5785;
+            --tag-color: #8bc34a;
+            --text-main: #333;
+            --text-light: #666;
+            --line-color: #e8e8e8;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f4f5f7;
+            margin: 0;
+            padding: 40px 0;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .resume-container {
+            width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 20px;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        .contact-item a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 20px;
+            border: 1px solid #eee;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--line-color);
+            margin-left: 15px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            margin-top: 15px;
+        }
+
+        .item-header:first-child {
+            margin-top: 0;
+        }
+
+        .item-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-time {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .tag {
+            background-color: var(--tag-color);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .item-desc {
+            font-size: 13px;
+            color: var(--text-main);
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .item-subtitle {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .aboutme-content {
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="resume-container" :style="{'--primary-color': data.theme.color, '--tag-color': data.theme.tagColor}">
+
+            <header class="header">
+                <div class="header-info">
+                    <h1 class="name">{{ data.profile.name }}</h1>
+                    <div class="contact-grid">
+                        <div class="contact-item">📞 {{ data.profile.mobile }}</div>
+                        <div class="contact-item">✉️ {{ data.profile.email }}</div>
+                        <div class="contact-item" v-if="data.profile.github">
+                            🐙 <a :href="data.profile.github.split(' ')[0]" target="_blank">{{ data.profile.github }}</a>
+                        </div>
+                        <div class="contact-item" v-if="data.profile.zhihu">
+                            🌐 <a :href="data.profile.zhihu" target="_blank">{{ data.profile.zhihu }}</a>
+                        </div>
+                    </div>
+                </div>
+                <img v-if="!data.avatar.hidden" :src="data.avatar.src" alt="头像" class="avatar">
+            </header>
+
+            <section class="section" v-if="data.educationList && data.educationList.length">
+                <div class="section-title">{{ data.titleNameMap.educationList }}</div>
+                <div v-for="(edu, index) in data.educationList" :key="index">
+                    <div class="item-header">
+                        <div class="item-title">
+                            <span>{{ edu.school }}</span>
+                            <span style="font-weight: normal; color: #666;">{{ edu.major }} ({{ edu.academic_degree }})</span>
+                        </div>
+                        <div class="item-time">{{ formatTime(edu.edu_time) }}</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" v-if="data.aboutme && data.aboutme.aboutme_desc">
+                <div class="section-title">{{ data.titleNameMap.aboutme }}</div>
+                <div class="aboutme-content">{{ data.aboutme.aboutme_desc }}</div>
+            </section>
+
+            <section class="section" v-if="data.workExpList && data.workExpList.length">
+                <div class="section-title">{{ data.titleNameMap.workExpList }}</div>
+                <div v-for="(work, index) in data.workExpList" :key="index" style="margin-bottom: 15px;">
+                    <div class="item-header">
+                        <div class="item-title">
+                            <span>{{ work.company_name }}</span>
+                            <span v-if="work.department_name" style="color: #888; font-weight: normal;"> {{ work.department_name }}</span>
+                        </div>
+                        <div class="item-time">{{ formatTime(work.work_time) }}</div>
+                    </div>
+                    <div class="item-desc">{{ work.work_desc }}</div>
+                </div>
+            </section>
+
+            <section class="section" v-if="data.projectList && data.projectList.length">
+                <div class="section-title">{{ data.titleNameMap.projectList }}</div>
+                <div v-for="(proj, index) in data.projectList" :key="index" style="margin-bottom: 15px;">
+                    <div class="item-header">
+                        <div class="item-title">
+                            <span>{{ proj.project_name }}</span>
+                            <span class="item-time" style="margin-left: 10px;">{{ proj.project_time }}</span>
+                        </div>
+                        <span class="tag" v-if="proj.project_role">{{ proj.project_role }}</span>
+                    </div>
+                    <div class="item-subtitle" v-if="proj.project_desc"><strong>项目描述：</strong>{{ proj.project_desc }}</div>
+                    <div class="item-desc"><strong>主要工作：</strong>{{ proj.project_content }}</div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        const resumeJSON = {
+    "titleNameMap": {
+        "educationList": "教育背景",
+        "workExpList": "工作经历",
+        "projectList": "项目经验",
+        "skillList": "个人技能",
+        "awardList": "更多信息",
+        "workList": "个人作品",
+        "aboutme": "自我介绍"
+    },
+    "avatar": {
+        "src": "https://avatars.githubusercontent.com/u/15646325?v=4",
+        "hidden": false
+    },
+    "profile": {
+        "name": "廖晓娟 (新茗)",
+        "email": "736xxxx86@qq.com",
+        "mobile": "156xxxx7119",
+        "github": "https://github.com/visiky (1.1k 粉丝)",
+        "zhihu": "https://www.zhihu.com/people/visiky",
+        "workExpYear": ""
+    },
+    "educationList": [
+        {
+            "edu_time": [
+                "2014.09.01",
+                "2018.06.30"
+            ],
+            "school": "华南理工大学",
+            "major": "网络工程",
+            "academic_degree": "本科"
+        }
+    ],
+    "awardList": [],
+    "workExpList": [
+        {
+            "company_name": "蚂蚁集团",
+            "department_name": "体验技术部",
+            "work_time": [
+                "2018.06",
+                null
+            ],
+            "work_desc": "1. 担任蚂蚁高管决策和管理协同产品「数据作战室」的前端负责人\n2. 负责蚂蚁敏捷 BI 产品「DeepInsight」的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
+        }
+    ],
+    "skillList": [],
+    "projectList": [
+        {
+            "project_name": "数据作战室",
+            "project_role": "前端负责人",
+            "project_time": "2019.04 - 2020.06",
+            "project_desc": "面向总裁和高管以及决策 BI 的数字化经营决策和管理协同的数据产品。",
+            "project_content": "1. 独立负责产品从 0 到 1 的开发与迭代\n2. 产品体验精雕细琢的打磨\n3. 建立稳定性保障机制，提升高管业务决策效率"
+        }
+    ],
+    "workList": [],
+    "aboutme": {
+        "aboutme_desc": "🌱 多年大型项目经历，专注在可视分析领域\n1. 项目管理: 具有独立跟进和推动项目进度经验\n2. 可视化经验: 通用组件设计和开发经验丰富"
+    },
+    "theme": {
+        "color": "#2f5785",
+        "tagColor": "#8bc34a"
+    }
+};
+
+        createApp({
+            data() {
+                return {
+                    data: resumeJSON
+                }
+            },
+            methods: {
+                formatTime(timeArr) {
+                    if (!timeArr || !timeArr.length) return '';
+                    const start = timeArr[0];
+                    const end = timeArr[1] ? timeArr[1] : '至今';
+                    return `${start} ~ ${end}`;
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

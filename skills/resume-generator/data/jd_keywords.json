@@ -1,0 +1,42 @@
+{
+  "clusters": {
+    "backend": [
+      "java", "jvm", "spring", "springboot", "spring boot", "mysql", "redis",
+      "微服务", "后端", "分布式", "kafka", "rabbitmq", "mybatis", "postgresql",
+      "api", "rest", "grpc", "docker", "k8s", "kubernetes", "nginx", "tomcat",
+      "高并发", "数据库", "索引", "sql"
+    ],
+    "frontend": [
+      "vue", "react", "angular", "javascript", "typescript", "html", "css",
+      "tailwind", "webpack", "vite", "前端", "组件", "响应式", "spa", "ui", "ux"
+    ],
+    "ai_agent": [
+      "llm", "agent", "rag", "prompt", "embedding", "vector", "fine-tuning",
+      "大模型", "智能体", "langchain", "openai", "gpt", "transformer", "nlp",
+      "chromadb", "faiss", "cot", "few-shot", "ai"
+    ],
+    "cv_ml": [
+      "opencv", "yolo", "pytorch", "tensorflow", "深度学习", "计算机视觉",
+      "cnn", "目标检测", "模型训练", "fine-tuning", "dataset", "推理"
+    ],
+    "fullstack": [
+      "全栈", "flask", "django", "fastapi", "node", "nodejs", "express",
+      "python", "go", "golang", "全栈开发"
+    ],
+    "test_qa": [
+      "测试", "自动化", "selenium", "pytest", "jmeter", "qa", "质量",
+      "回归", "单元测试", "接口测试", "性能测试"
+    ],
+    "iot": [
+      "物联网", "iot", "mqtt", "传感器", "嵌入式", "硬件"
+    ]
+  },
+  "tech_terms": [
+    "java", "python", "javascript", "typescript", "go", "rust", "c++", "c#",
+    "spring", "vue", "react", "mysql", "redis", "mongodb", "docker", "kubernetes",
+    "aws", "azure", "gcp", "linux", "git", "ci", "cd", "agile", "scrum",
+    "llm", "rag", "agent", "opencv", "yolo", "flask", "fastapi", "graphql",
+    "elasticsearch", "hadoop", "spark", "kafka", "rabbitmq", "nginx",
+    "微服务", "分布式", "高并发", "大数据", "机器学习", "深度学习", "大模型"
+  ]
+}

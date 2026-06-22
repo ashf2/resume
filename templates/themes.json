@@ -1,0 +1,43 @@
+{
+  "themes": [
+    {
+      "id": "default",
+      "name": "系统默认",
+      "description": "当前仓库默认简约模板，蓝绿配色、白底卡片布局",
+      "template": "resume.html",
+      "color": "#2f5785",
+      "tagColor": "#8bc34a",
+      "pageBg": "#f4f5f7",
+      "cardBg": "#ffffff",
+      "textMain": "#333333",
+      "textLight": "#666666",
+      "lineColor": "#e8e8e8"
+    },
+    {
+      "id": "blue-minimal",
+      "name": "蓝色简约",
+      "description": "冷色极简风格，浅蓝背景、细线分隔、留白更多",
+      "template": "resume.html",
+      "color": "#1565c0",
+      "tagColor": "#42a5f5",
+      "pageBg": "#eef4fb",
+      "cardBg": "#ffffff",
+      "textMain": "#1a2b3c",
+      "textLight": "#5a6f82",
+      "lineColor": "#d0e3f5"
+    },
+    {
+      "id": "classic",
+      "name": "通用美观",
+      "description": "通用商务风格，暖灰配色、柔和阴影与章节色条",
+      "template": "resume.html",
+      "color": "#3d4f5f",
+      "tagColor": "#e67e22",
+      "pageBg": "#f0ece6",
+      "cardBg": "#ffffff",
+      "textMain": "#2d3436",
+      "textLight": "#636e72",
+      "lineColor": "#dfe6e9"
+    }
+  ]
+}

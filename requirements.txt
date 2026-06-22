@@ -1,0 +1,5 @@
+# Optional: enables strict JSON Schema validation in validate_resume.py
+jsonschema>=4.21.0
+
+# PDF export via headless Chromium (export_pdf.py, render_resume.py --pdf)
+playwright>=1.40.0

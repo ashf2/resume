@@ -1,0 +1,59 @@
+{
+  "titleNameMap": {
+    "educationList": "教育背景",
+    "workExpList": "工作经历",
+    "projectList": "项目经验",
+    "skillList": "个人技能",
+    "awardList": "更多信息",
+    "workList": "个人作品",
+    "aboutme": "自我介绍"
+  },
+  "avatar": {
+    "src": "",
+    "hidden": false
+  },
+  "profile": {
+    "name": "韩梅梅",
+    "email": "736xxxx86@qq.com",
+    "mobile": "156xxxx7119",
+    "github": "https://github.com/visiky (1.1k 粉丝)",
+    "zhihu": "https://www.zhihu.com/people/visiky",
+    "workExpYear": "",
+    "position": "高级前端工程师"
+  },
+  "educationList": [
+    {
+      "edu_time": ["2014.09.01", "2018.06.30"],
+      "school": "华南理工大学",
+      "major": "网络工程",
+      "academic_degree": "本科"
+    }
+  ],
+  "awardList": [],
+  "workExpList": [
+    {
+      "company_name": "蚂蚁集团",
+      "department_name": "体验技术部",
+      "work_time": ["2018.06", null],
+      "work_desc": "1. 担任蚂蚁高管决策和管理协同产品「数据作战室」的前端负责人\n2. 负责蚂蚁敏捷 BI 产品「DeepInsight」的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
+    }
+  ],
+  "skillList": [],
+  "projectList": [
+    {
+      "project_name": "数据作战室",
+      "project_role": "前端负责人",
+      "project_time": "2019.04 - 2020.06",
+      "project_desc": "面向总裁和高管以及决策 BI 的数字化经营决策和管理协同的数据产品。",
+      "project_content": "1. 独立负责产品从 0 到 1 的开发与迭代\n2. 产品体验精雕细琢的打磨\n3. 建立稳定性保障机制，提升高管业务决策效率"
+    }
+  ],
+  "workList": [],
+  "aboutme": {
+    "aboutme_desc": "多年大型项目经历，专注在可视分析领域。"
+  },
+  "theme": {
+    "color": "#2f5785",
+    "tagColor": "#8bc34a"
+  }
+}
