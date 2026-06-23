@@ -1,1 +1,0 @@
-AI Agent 工程师 / 大模型应用开发。要求 LLM、Prompt、RAG、Agent、向量数据库、LangChain、Python/Java 后端、大模型应用落地。
